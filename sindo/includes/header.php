@@ -6,8 +6,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sindo - <?= isset($page_title) ? htmlspecialchars($page_title) : 'Manajemen Tugas Mahasiswa' ?></title>
-<link rel="icon" href="/sindo/assets/images/favicon.png" type="image/png" />
+<title>SI-NDO - <?= isset($page_title) ? htmlspecialchars($page_title) : 'Manajemen Tugas Mahasiswa' ?></title>
+<link rel="icon" href="/sindo/assets/images/logo.png" type="image/png"/>
 
 <!-- Bootstrap & Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -104,8 +104,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/sindo/index.php">
+    <img src="/sindo/assets/images/fontlogo.png" alt="SINDO Logo" style="height: 55px; margin-right: 10px;">
         <a class="navbar-brand" href="/sindo/index.php">
-            SINDO
         </a>
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
