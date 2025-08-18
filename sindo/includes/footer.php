@@ -2,7 +2,7 @@
 
         <footer class="bg-light text-center text-lg-start mt-5">
             <div class="text-center p-3 bg-primary text-white">
-                © <?= date('Y') ?> Sindo - Sistem Manajemen Tugas Mahasiswa Developed By : Firdy Ridho
+                © <?= date('Y') ?> SI-NDO - Sistem Manajemen Tugas Mahasiswa Developed By : Firdy Ridho
             </div>
         </footer>
 
