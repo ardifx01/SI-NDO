@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         :root {
             --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
+            --secondary-color: #4361ee;
             --accent-color: #4895ef;
             --light-color: #f8f9fa;
             --dark-color: #212529;
@@ -244,8 +244,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="register-card">
                 <div class="register-header">
                     <div class="logo">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>SINDO</span>
+                        <img src="assets/images/putih.png" alt="SINDO" class="img-fluid" style="max-height: 70px;">
+                        <span>SI-NDO</span>
                     </div>
                     <p class="mb-0">Buat Akun Mahasiswa Baru</p>
                 </div>
