@@ -1,3 +1,11 @@
+SI-NDO - Student Organizer Web App
+✨ Aplikasi Manajemen Jadwal & Tugas Mahasiswa berbasis Web
+
+https://img.shields.io/badge/PHP-8.0%252B-blue.svg
+https://img.shields.io/badge/MySQL-5.7%252B-orange.svg
+https://img.shields.io/badge/Bootstrap-5.0-purple.svg
+https://img.shields.io/badge/License-MIT-green.svg
+
 SI-NDO adalah aplikasi web untuk membantu mahasiswa mengatur jadwal kuliah, tugas, dan acara akademik dengan mudah! Dibangun dengan PHP, MySQL, dan Bootstrap 5, Sindo hadir dengan antarmuka yang modern dan fitur lengkap untuk produktivitas mahasiswa.
 
 🚀 Fitur Unggulan:
