@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2025 at 04:17 PM
+-- Generation Time: Aug 18, 2025 at 05:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `acara` (
 --
 
 INSERT INTO `acara` (`id`, `judul`, `deskripsi`, `tanggal_mulai`, `tanggal_selesai`, `lokasi`, `user_id`) VALUES
-(1, 'Seminar Motivasi', 'Motivasi Hidup', '2025-08-14 14:18:00', '2025-08-14 19:18:00', 'Online Viz Zoom', 1);
+(1, 'Seminar Motivasi', 'Motivasi Hidup', '2025-08-14 14:18:00', '2025-08-14 19:18:00', 'Online Via Zoom', 1);
 
 -- --------------------------------------------------------
 
@@ -160,7 +160,7 @@ CREATE TABLE `tugas` (
 --
 
 INSERT INTO `tugas` (`id`, `judul`, `deskripsi`, `mk_id`, `deadline`, `status`, `prioritas`, `user_id`, `created_at`) VALUES
-(1, 'Membuat Halaman Login', 'Buat dengan PHP dan Sql', 2, '2025-08-12 06:00:00', 'Dalam Pengerjaan', 'Sedang', 1, '2025-08-10 14:57:25'),
+(1, 'Membuat Halaman Login', 'Buat dengan PHP dan Sql', 2, '2025-08-12 06:00:00', 'Selesai', 'Sedang', 1, '2025-08-10 14:57:25'),
 (2, 'buat logout.php', 'pake vscode', 3, '2025-08-12 14:05:00', 'Selesai', 'Sedang', 1, '2025-08-11 07:05:47');
 
 -- --------------------------------------------------------
@@ -174,6 +174,10 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
+  `nim` varchar(20) DEFAULT NULL,
+  `prodi` varchar(50) DEFAULT NULL,
+  `fakultas` varchar(50) DEFAULT NULL,
+  `semester` int(2) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -182,9 +186,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `created_at`) VALUES
-(1, 'firdyridho', '$2y$10$YIdfYOH0kRRu3kld/GpWf.Sz1O0VNXe6nBYceFzfQqTOMGmOjFAYe', 'firdyridho', 'firdyridho9@gmail.com', '2025-08-10 13:30:44'),
-(2, 'ndo', '$2y$10$FNtLGQxuqStFqfrw192mLeLIzrn0ZajaCWHsmGeG90.PdAktGb8ne', 'ridho', 'ndo@gmail.com', '2025-08-11 06:42:37');
+INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `nim`, `prodi`, `fakultas`, `semester`, `email`, `created_at`) VALUES
+(1, 'firdyridho', '$2y$10$YIdfYOH0kRRu3kld/GpWf.Sz1O0VNXe6nBYceFzfQqTOMGmOjFAYe', 'firdyridho', '3337250018', 'Informatika', 'Teknik', 1, 'firdyridho9@gmail.com', '2025-08-10 13:30:44'),
+(2, 'ndo', '$2y$10$FNtLGQxuqStFqfrw192mLeLIzrn0ZajaCWHsmGeG90.PdAktGb8ne', 'ridho', NULL, NULL, NULL, NULL, 'ndo@gmail.com', '2025-08-11 06:42:37'),
+(3, 'zaki123', '$2y$10$ImjEu1/SliyMsUDtcfSafeZfbGinrLJWyg16FId3uiFYEakYRZ.f.', 'zakie', NULL, 'Hukum Tata Negara', 'Fakultas Hukum', 1, 'zakie@gmail.com', '2025-08-17 14:37:07'),
+(4, 'Fanujiya', '$2y$10$N0ClRsIex.3s/S9Ldu1icO.Z9LAF7yyHRFlYRLTfnXlpuZXC9KQfy', 'Fanujiya Kidna Khasal', NULL, NULL, NULL, NULL, 'khasalfanujiya30@gmail.com', '2025-08-18 00:22:27');
 
 --
 -- Indexes for dumped tables
@@ -286,7 +292,7 @@ ALTER TABLE `tugas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
