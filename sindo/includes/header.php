@@ -1,5 +1,33 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
+
+// Enhanced profile completeness check including NIM
+$profile_complete = true;
+$profile_message = '';
+$missing_fields = [];
+
+if (isLoggedIn()) {
+    $user = getUserData($pdo, $_SESSION['user_id']);
+    
+    // Check all required profile fields
+    $required_fields = [
+        'nim' => 'NIM',
+        'fakultas' => 'Fakultas',
+        'prodi' => 'Program Studi',
+        'semester' => 'Semester'
+    ];
+    
+    foreach ($required_fields as $field => $label) {
+        if (empty($user[$field])) {
+            $missing_fields[] = $label;
+        }
+    }
+    
+    if (!empty($missing_fields)) {
+        $profile_complete = false;
+        $profile_message = 'Lengkapi data profil Anda: ' . implode(', ', $missing_fields);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,14 +127,64 @@ $current_page = basename($_SERVER['PHP_SELF']);
 @media (max-width: 991px) {
     .nav-link::after { display: none; }
 }
+
+/* Notification Badge */
+.profile-notification {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff4757;
+    color: white;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile Notification Alert */
+.profile-alert {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-left: 4px solid #ff4757;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Mobile Optimization */
+@media (max-width: 991px) {
+    .profile-alert {
+        top: 70px;
+        right: 10px;
+        left: 10px;
+    }
+}
 </style>
 </head>
 <body>
+<!-- Profile Notification Alert -->
+<?php if (isLoggedIn() && !$profile_complete): ?>
+<div class="alert alert-warning alert-dismissible fade show profile-alert" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <?= $profile_message ?>
+    <a href="/sindo/pages/profil/index.php" class="alert-link">Lengkapi Sekarang</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php endif; ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="/sindo/index.php">
-    <img src="/sindo/assets/images/fontlogo.png" alt="SINDO Logo" style="height: 55px; margin-right: 10px;">
-        <a class="navbar-brand" href="/sindo/index.php">
+            <img src="/sindo/assets/images/fontlogo.png" alt="SINDO Logo" style="height: 55px; margin-right: 10px;">
         </a>
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -137,13 +215,21 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <?php if (isLoggedIn()): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                            <div class="profile-icon">
+                            <div class="profile-icon position-relative">
                                 <i class="bi bi-person"></i>
+                                <?php if (!$profile_complete): ?>
+                                    <span class="profile-notification">!</span>
+                                <?php endif; ?>
                             </div>
                             <?= htmlspecialchars($_SESSION['username']) ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/sindo/pages/profil/index.php"><i class="bi bi-person me-2"></i>Profil</a></li>
+                            <li><a class="dropdown-item" href="/sindo/pages/profil/index.php">
+                                <i class="bi bi-person me-2"></i>Profil
+                                <?php if (!$profile_complete): ?>
+                                    <span class="badge bg-danger float-end">!</span>
+                                <?php endif; ?>
+                            </a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/sindo/logout.php"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                         </ul>
@@ -160,12 +246,24 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <main class="container mt-5 pt-5">
 
 <script>
+// Navbar scroll effect
 document.addEventListener("scroll", function() {
     const nav = document.querySelector(".navbar-custom");
     if (window.scrollY > 20) {
         nav.classList.add("scrolled");
     } else {
         nav.classList.remove("scrolled");
+    }
+});
+
+// Auto-hide profile alert after 10 seconds
+document.addEventListener("DOMContentLoaded", function() {
+    const profileAlert = document.querySelector('.profile-alert');
+    if (profileAlert) {
+        setTimeout(() => {
+            const bsAlert = new bootstrap.Alert(profileAlert);
+            bsAlert.close();
+        }, 10000);
     }
 });
 </script>
