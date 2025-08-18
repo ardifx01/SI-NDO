@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sindo - Login Mahasiswa</title>
+    <title>SI-NDO - Login Mahasiswa</title>
+    <link rel="icon" href="/sindo/assets/images/logo.png" type="image/png"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,8 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="login-container animate__animated animate__fadeIn">
             <div class="login-card">
                 <div class="login-header">
-                    <div class="logo">
-                        <span>SINDO</span>
+                     <div class="logo">
+                         <img src="assets/images/putih.png" alt="SINDO" class="img-fluid" style="max-height: 70px;">
+                        <span>SI-NDO</span>
                     </div>
                     <p class="mb-0">Sistem Informasi Mahasiswa</p>
                 </div>
@@ -187,3 +189,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
 </body>
 </html>
+
