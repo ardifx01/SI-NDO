@@ -1,0 +1,60 @@
+/* Custom CSS untuk Sindo */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 5px;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efek hover untuk card */
+.card-hover:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Warna custom */
+.bg-primary {
+  background-color: #4e73df !important;
+}
+
+.btn-primary {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2e59d9;
+}
+
+/* Responsive table */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Custom checkbox */
+.form-check-input:checked {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
