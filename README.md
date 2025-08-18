@@ -1,82 +1,76 @@
-Deskripsi Aplikasi Sindo
-Sindo (Sistem Informasi Jadwal & Tugas Mahasiswa) adalah sebuah aplikasi manajemen akademik berbasis web yang dirancang khusus untuk membantu mahasiswa dalam mengorganisir jadwal kuliah, tugas, dan acara penting secara efisien. Dibangun dengan PHP, MySQL, dan Bootstrap, aplikasi ini menawarkan antarmuka yang user-friendly dan fitur-fitur lengkap untuk memudahkan mahasiswa dalam memantau aktivitas akademik mereka.
+SI-NDO adalah aplikasi web untuk membantu mahasiswa mengatur jadwal kuliah, tugas, dan acara akademik dengan mudah! Dibangun dengan PHP, MySQL, dan Bootstrap 5, Sindo hadir dengan antarmuka yang modern dan fitur lengkap untuk produktivitas mahasiswa.
 
-✨ Fitur Utama
-1. Manajemen Jadwal Kuliah
-Tampilan jadwal harian/mingguan yang terorganisir
+🚀 Fitur Unggulan:
+✅ Manajemen Jadwal Kuliah (Grid & Kalender)
+✅ Pelacakan Tugas & Deadline
+✅ Pencatatan Acara Penting
+✅ Sistem Login/Register
+✅ Export Jadwal ke Excel
 
-Pengelompokan mata kuliah berdasarkan hari
+⚙️ Teknologi yang Digunakan
+Kategori	Teknologi
+Frontend	Bootstrap 5, JavaScript, FullCalendar
+Backend	PHP (PDO), MySQL
+Keamanan	CSRF Protection, Brute-force Prevention
+Libraries	PHPMailer (Email Reset)
+🚀 Cara Memulai
+Persyaratan
+PHP 8.0+
 
-Detail lengkap (nama matkul, dosen, ruangan, jam)
+MySQL 5.7+
 
-Dukungan tampilan Grid dan Kalender Interaktif
+Web Server (Apache/Nginx)
 
-2. Manajemen Tugas
-Input tugas dengan deadline dan prioritas
+Instalasi
+Clone repository:
 
-Kategori status (Belum Dimulai, Dalam Pengerjaan, Selesai)
+bash
+git clone https://github.com/username/sindo.git
+Import database (sindo.sql)
 
-Notifikasi tugas yang mendekati deadline
+Konfigurasi koneksi di config/database.php
 
-Filter berdasarkan mata kuliah atau status
+Jalankan di browser:
 
-3. Manajemen Acara
-Catatan acara penting (seminar, ujian, pertemuan)
+text
+http://localhost/sindo
+💡 Fitur Lengkap
+📅 Manajemen Jadwal
+Tampilan per hari/minggu
 
-Pengingat waktu dan lokasi acara
+Tambah, edit, hapus jadwal
 
-Tampilan berdasarkan timeline
+Integrasi dengan Kalender Interaktif
 
-4. Sistem Keamanan
-Login/Register dengan validasi akun
+📝 Manajemen Tugas
+Prioritas (Rendah/Sedang/Tinggi)
 
-Lupa Password dengan reset via email
+Status (Belum/Dalam Pengerjaan/Selesai)
 
-Proteksi CSRF (Cross-Site Request Forgery)
+Notifikasi deadline
 
-Brute-force attack prevention
+🔐 Sistem Keamanan
+Login/Register
 
-5. Fitur Tambahan
-Export Jadwal ke Excel untuk kebutuhan dokumentasi
+Reset Password via Email
 
-Statistik tugas dan jadwal
+Proteksi CSRF & Brute-force
 
-Responsive design (bisa diakses via PC, tablet, atau smartphone)
+📊 Export Data
+Ekspor jadwal ke Excel
 
-🛠 Teknologi yang Digunakan
-Frontend: Bootstrap 5, JavaScript, FullCalendar.js
+🤝 Kontribusi
+Sindo adalah proyek open-source!
+🔹 Laporkan bug via Issues
+🔹 Ajukan fitur baru
+🔹 Fork & Pull Request dipersilakan!
 
-Backend: PHP (Procedural & PDO)
+📜 Lisensi
+Proyek ini dilisensikan di bawah MIT License.
 
-Database: MySQL
+🌟 Like SI-NDO? Beri Bintang!
+Jika project ini membantu Anda, jangan lupa ⭐ star repo ini!
 
-Libraries: PHPMailer (untuk sistem reset password via email)
 
-🎯 Tujuan Aplikasi
-Aplikasi ini dibuat untuk:
-✔ Membantu mahasiswa mengatur jadwal kuliah dan tugas dengan lebih terstruktur
-✔ Meminimalisir risiko lupa deadline tugas atau jadwal ujian
-✔ Memberikan pengalaman manajemen waktu yang lebih baik
-
-📌 Cara Menggunakan
-Login dengan akun yang sudah terdaftar
-
-Tambah Mata Kuliah dan atur jadwalnya
-
-Input Tugas beserta deadline-nya
-
-Catat Acara Penting (ujian, seminar, dll)
-
-Pantau semua aktivitas di Dashboard
-
-🚀 Keunggulan
-✅ Gratis & Mudah Digunakan – Tidak perlu biaya untuk mengakses fitur-fitur lengkap
-✅ Real-time Tracking – Pantau tugas dan jadwal secara langsung
-✅ Backup Data – Ekspor jadwal ke Excel untuk cadangan
-
-Aplikasi Sindo cocok digunakan oleh mahasiswa dari berbagai jurusan yang ingin meningkatkan produktivitas akademik mereka. Dengan fitur yang lengkap dan antarmuka yang intuitif, Sindo siap menjadi asisten digital terbaik untuk mengatur kegiatan perkuliahan! 🎓💡
-
-📜 License
-MIT.License
-
-© 2025 Sindo - By:Firdy Ridho Fillah
+© 2025 SI-NDO - Developed By : Firdy Ridho Fillah 
+SI-NDO Kelola Jadwal Kuliah & Tugas dengan Mudah!
