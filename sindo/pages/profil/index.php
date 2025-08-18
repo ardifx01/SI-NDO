@@ -11,29 +11,36 @@ $success = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama_lengkap = $_POST['nama_lengkap'];
     $email = $_POST['email'];
+    $nim = $_POST['nim'];
+    $fakultas = $_POST['fakultas'];
+    $prodi = $_POST['prodi'];
+    $semester = $_POST['semester'];
     
-    if (empty($nama_lengkap) || empty($email)) {
-        $error = 'Nama lengkap dan email harus diisi';
+    if (empty($nama_lengkap) || empty($email) || empty($nim) || empty($fakultas) || empty($prodi) || empty($semester)) {
+        $error = 'Semua field harus diisi';
+    } elseif (!is_numeric($semester)) {
+        $error = 'Semester harus berupa angka';
+    } elseif (!preg_match('/^[A-Za-z0-9]+$/', $nim)) {
+        $error = 'NIM hanya boleh berisi huruf dan angka';
     } else {
-        // Cek email sudah digunakan oleh user lain
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
-        $stmt->execute([$email, $_SESSION['user_id']]);
+        // Cek email dan NIM sudah digunakan oleh user lain
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE (email = ? OR nim = ?) AND id != ?");
+        $stmt->execute([$email, $nim, $_SESSION['user_id']]);
         if ($stmt->fetch()) {
-            $error = 'Email sudah digunakan oleh akun lain';
+            $error = 'Email atau NIM sudah digunakan oleh akun lain';
         } else {
-            $stmt = $pdo->prepare("UPDATE users SET nama_lengkap = ?, email = ? WHERE id = ?");
-            if ($stmt->execute([$nama_lengkap, $email, $_SESSION['user_id']])) {
+            $stmt = $pdo->prepare("UPDATE users SET nama_lengkap = ?, email = ?, nim = ?, fakultas = ?, prodi = ?, semester = ? WHERE id = ?");
+            if ($stmt->execute([$nama_lengkap, $email, $nim, $fakultas, $prodi, $semester, $_SESSION['user_id']])) {
                 $success = 'Profil berhasil diperbarui';
                 // Update session data
                 $_SESSION['username'] = $user['username'];
+                // Refresh data user
+                $user = getUserData($pdo, $_SESSION['user_id']);
             } else {
                 $error = 'Gagal memperbarui profil';
             }
         }
     }
-    
-    // Ambil data terbaru
-    $user = getUserData($pdo, $_SESSION['user_id']);
 }
 ?>
 
@@ -61,6 +68,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="text-muted">@<?= htmlspecialchars($user['username']) ?></p>
                     
                     <div class="mt-4">
+                        <div class="mb-3">
+                            <h6>Informasi Akademik</h6>
+                            <p class="mb-1">
+                                <small class="text-muted">NIM:</small><br>
+                                <?= $user['nim'] ? htmlspecialchars($user['nim']) : '<span class="text-danger">Belum diisi</span>' ?>
+                            </p>
+                            <p class="mb-1">
+                                <small class="text-muted">Fakultas:</small><br>
+                                <?= $user['fakultas'] ? htmlspecialchars($user['fakultas']) : '<span class="text-danger">Belum diisi</span>' ?>
+                            </p>
+                            <p class="mb-1">
+                                <small class="text-muted">Program Studi:</small><br>
+                                <?= $user['prodi'] ? htmlspecialchars($user['prodi']) : '<span class="text-danger">Belum diisi</span>' ?>
+                            </p>
+                            <p class="mb-1">
+                                <small class="text-muted">Semester:</small><br>
+                                <?= $user['semester'] ? 'Semester '.htmlspecialchars($user['semester']) : '<span class="text-danger">Belum diisi</span>' ?>
+                            </p>
+                        </div>
+                        
+                        <hr>
+                        
                         <div class="d-flex justify-content-between mb-2">
                             <span>Mata Kuliah</span>
                             <span class="badge bg-primary">
@@ -125,6 +154,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" 
                                    value="<?= htmlspecialchars($user['email']) ?>" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="nim" class="form-label">NIM</label>
+                            <input type="text" class="form-control" id="nim" name="nim" 
+                                   value="<?= htmlspecialchars($user['nim']) ?>" placeholder="Masukkan NIM" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fakultas" class="form-label">Fakultas</label>
+                                <input type="text" class="form-control" id="fakultas" name="fakultas" 
+                                       value="<?= htmlspecialchars($user['fakultas']) ?>" placeholder="Contoh: Fakultas Teknik" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="prodi" class="form-label">Program Studi</label>
+                                <input type="text" class="form-control" id="prodi" name="prodi" 
+                                       value="<?= htmlspecialchars($user['prodi']) ?>" placeholder="Contoh: Teknik Informatika" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="semester" class="form-label">Semester</label>
+                            <input type="number" class="form-control" id="semester" name="semester" 
+                                   value="<?= htmlspecialchars($user['semester']) ?>" min="1" max="14" placeholder="1-14" required>
                         </div>
                         
                         <div class="mb-3">
