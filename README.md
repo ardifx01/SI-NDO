@@ -3,7 +3,7 @@
 
 
 
-# SI-NDO | Student Organizer Web App
+# SI-NDO | Student Organizer And Reminder App
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.0+-777BB4?logo=php)
 ![MySQL Version](https://img.shields.io/badge/MySQL-5.7+-4479A1?logo=mysql)
