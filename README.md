@@ -69,3 +69,75 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
    ```bash
    git clone https://github.com/username/SI-NDO.git
    cd SI-NDO
+   ```
+
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
+
+3. Buat database baru di MySQL
+
+4. Import struktur database:
+   ```bash
+   mysql -u username -p nama_database < sindo.sql
+   ```
+
+## ⚡ Konfigurasi
+
+1. Salin file konfigurasi:
+   ```bash
+   cp config/database.example.php config/database.php
+   ```
+
+2. Edit file `config/database.php`:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'username');
+   define('DB_PASS', 'password');
+   define('DB_NAME', 'nama_database');
+   ```
+
+
+## 📝 Cara Penggunaan
+
+1. **Membuat Jadwal**
+   - Klik tombol "+ Jadwal" di kalender
+   - Isi detail jadwal
+   - Simpan
+
+2. **Menambahkan Tugas**
+   - Buka menu "Tugas"
+   - Klik "Tugas Baru"
+   - Atur prioritas dan deadline
+
+3. **Ekspor Data**
+   - Buka menu "Laporan"
+   - Pilih periode
+   - Klik "Ekspor ke Excel"
+
+## 🤝 Berkontribusi
+
+Kami menerima kontribusi berupa:
+- Pelaporan bug
+- Permintaan fitur
+- Kode program
+
+
+## 📜 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+## 📞 Kontak
+
+**Pengembang:** Firdy Ridho Fillah  
+**Email:** firdyridho9@gmail.com  
+**Instagram:** @firdyfillaa_ 
+
+---
+
+⭐ Jika Anda menemukan proyek ini bermanfaat, mohon beri star pada repository ini!
+
+```bash
+# Selamat menggunakan SI-NDO!
+```
