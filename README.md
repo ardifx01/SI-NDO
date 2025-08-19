@@ -32,7 +32,6 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 ### 🔐 Sistem Akun
 - Registrasi pengguna
 - Login dengan remember me
-- Reset password via email
 
 ### 📊 Laporan
 - Ekspor jadwal ke Excel
