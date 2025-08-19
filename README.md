@@ -1,79 +1,71 @@
-SI-NDO - Student Organizer Web App
-✨ Aplikasi Manajemen Jadwal & Tugas Mahasiswa berbasis Web
+# SI-NDO - Student Organizer Web App
 
-SI-NDO adalah aplikasi web untuk membantu mahasiswa mengatur jadwal kuliah, tugas, dan acara akademik dengan mudah! Dibangun dengan PHP, MySQL, dan Bootstrap 5, Sindo hadir dengan antarmuka yang modern dan fitur lengkap untuk produktivitas mahasiswa.
+![PHP Version](https://img.shields.io/badge/PHP-8.0+-777BB4?logo=php)
+![MySQL Version](https://img.shields.io/badge/MySQL-5.7+-4479A1?logo=mysql)
+![Bootstrap Version](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-🚀 Fitur Unggulan:
-✅ Manajemen Jadwal Kuliah (Grid & Kalender)
-✅ Pelacakan Tugas & Deadline
-✅ Pencatatan Acara Penting
-✅ Sistem Login/Register
-✅ Export Jadwal ke Excel
+Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan MySQL.
 
-⚙️ Teknologi yang Digunakan
-Kategori	Teknologi
-Frontend	Bootstrap 5, JavaScript, FullCalendar
-Backend	PHP (PDO), MySQL
-Keamanan	CSRF Protection, Brute-force Prevention
-Libraries	PHPMailer (Email Reset)
-🚀 Cara Memulai
-Persyaratan
-PHP 8.0+
+## 📌 Daftar Isi
+- [Fitur](#-fitur)
+- [Teknologi](#-teknologi)
+- [Instalasi](#-instalasi)
+- [Konfigurasi](#-konfigurasi)
+- [Cara Penggunaan](#-cara-penggunaan)
+- [Berkontribusi](#-berkontribusi)
+- [Lisensi](#-lisensi)
+- [Kontak](#-kontak)
 
-MySQL 5.7+
+## ✨ Fitur
 
-Web Server (Apache/Nginx)
+### 📅 Manajemen Jadwal
+- Tampilan kalender mingguan/bulanan
+- Input jadwal kuliah
+- Pengingat jadwal harian
 
-Instalasi
-Clone repository:
+### 📚 Manajemen Tugas
+- Sistem prioritas (Rendah/Sedang/Tinggi)
+- Notifikasi deadline
+- Filter berdasarkan mata kuliah
 
-bash
-git clone https://github.com/username/sindo.git
-Import database (sindo.sql)
+### 🔐 Sistem Akun
+- Registrasi pengguna
+- Login dengan remember me
+- Reset password via email
 
-Konfigurasi koneksi di config/database.php
+### 📊 Laporan
+- Ekspor jadwal ke Excel
+- Statistik produktivitas
 
-Jalankan di browser:
+## 🛠 Teknologi
 
-text
-http://localhost/sindo
-💡 Fitur Lengkap
-📅 Manajemen Jadwal
-Tampilan per hari/minggu
+**Frontend:**
+- Bootstrap 5
+- JavaScript
+- FullCalendar.js
+- SweetAlert2
 
-Tambah, edit, hapus jadwal
+**Backend:**
+- PHP 8.0+
+- MySQL 5.7+
+- PHPMailer
 
-Integrasi dengan Kalender Interaktif
+**Keamanan:**
+- CSRF Protection
+- Password Hashing
+- Brute-force Prevention
 
-📝 Manajemen Tugas
-Prioritas (Rendah/Sedang/Tinggi)
+## ⚙️ Instalasi
 
-Status (Belum/Dalam Pengerjaan/Selesai)
+### Persyaratan Sistem
+- PHP 8.0 atau lebih baru
+- MySQL 5.7 atau lebih baru
+- Web server (Apache/Nginx)
+- Composer (untuk dependencies)
 
-Notifikasi deadline
-
-🔐 Sistem Keamanan
-Login/Register
-
-Reset Password via Email
-
-Proteksi CSRF & Brute-force
-
-📊 Export Data
-Ekspor jadwal ke Excel
-
-🤝 Kontribusi
-Sindo adalah proyek open-source!
-🔹 Laporkan bug via Issues
-🔹 Ajukan fitur baru
-🔹 Fork & Pull Request dipersilakan!
-
-📜 Lisensi
-Proyek ini dilisensikan di bawah MIT License.
-
-🌟 Like SI-NDO? Beri Bintang!
-Jika project ini membantu Anda, jangan lupa ⭐ star repo ini!
-
-
-© 2025 SI-NDO - Developed By : Firdy Ridho Fillah 
-SI-NDO Kelola Jadwal Kuliah & Tugas dengan Mudah!
+### Langkah-langkah
+1. Clone repository:
+   ```bash
+   git clone https://github.com/username/SI-NDO.git
+   cd SI-NDO
