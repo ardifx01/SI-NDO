@@ -126,7 +126,7 @@ Kami menerima kontribusi berupa:
 
 ## 📜 Lisensi
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+Proyek ini dilisensikan di bawah [MIT License](https://github.com/firdyridho/SI-NDO/blob/main/LICENSE).
 
 ## 📞 Kontak
 
