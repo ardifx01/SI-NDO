@@ -48,7 +48,6 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 **Backend:**
 - PHP 8.0+
 - MySQL 5.7+
-- PHPMailer
 
 **Keamanan:**
 - CSRF Protection
