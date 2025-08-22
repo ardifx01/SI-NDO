@@ -126,7 +126,7 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 
 4. **Menambah Musik**
    - Buka folder assets/music/
-   - Tambahkan file musik Support format: mp3, wav, ogg, m4a, aac.
+   - Tambahkan file musik, dan sudah support format: mp3, wav, ogg, m4a, aac.
    - Musik akan otomatis terbaca dan muncul di playlist
 
 ## 🤝 Berkontribusi
