@@ -43,7 +43,7 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 - Statistik produktivitas
 
 ### 🎵 Musik
-- Pemutar musik bawaan
+- Pemutar untuk menemani mengerjakan tugas
 - Bisa menambahkan playlist musik sendiri
 - Playlist otomatis membaca semua lagu di folder `assets/music`
 
@@ -126,7 +126,7 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 
 4. **Menambah Musik**
    - Buka folder assets/music/
-   - Tambahkan file musik berformat .mp3 atau .wav
+   - Tambahkan file musik Support format: mp3, wav, ogg, m4a, aac.
    - Musik akan otomatis terbaca dan muncul di playlist
 
 ## 🤝 Berkontribusi
