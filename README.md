@@ -42,6 +42,11 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
 - Ekspor jadwal ke Excel
 - Statistik produktivitas
 
+### 🎵 Musik
+- Pemutar musik bawaan
+- Bisa menambahkan playlist musik sendiri
+- Playlist otomatis membaca semua lagu di folder `assets/music`
+
 ## 🛠 Teknologi
 
 **Frontend:**
@@ -118,6 +123,11 @@ Aplikasi web untuk manajemen jadwal kuliah dan tugas mahasiswa berbasis PHP dan 
    - Buka menu "Laporan"
    - Pilih periode
    - Klik "Ekspor ke Excel"
+
+4. **Menambah Musik**
+   - Buka folder assets/music/
+   - Tambahkan file musik berformat .mp3 atau .wav
+   - Musik akan otomatis terbaca dan muncul di playlist
 
 ## 🤝 Berkontribusi
 
