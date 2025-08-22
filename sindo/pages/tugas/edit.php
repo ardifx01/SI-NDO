@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'];
     $prioritas = $_POST['prioritas'];
     
-    if (empty($judul)) {
-        $error = 'Judul tugas tidak boleh kosong';
+    if (empty($judul) || empty($deadline) || empty($mk_id)) {
+        $error = 'Semua kolom wajib harus diisi';
     } else {
         $stmt = $pdo->prepare("UPDATE tugas SET judul = ?, deskripsi = ?, mk_id = ?, deadline = ?, status = ?, prioritas = ? WHERE id = ? AND user_id = ?");
         if ($stmt->execute([$judul, $deskripsi, $mk_id, $deadline, $status, $prioritas, $tugas['id'], $_SESSION['user_id']])) {
@@ -58,10 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <!-- Form -->
-            <form method="post">
+            <form method="post" id="editTugasForm" novalidate>
                 <div class="mb-3">
-                    <label for="judul" class="form-label">Judul Tugas</label>
-                    <input type="text" class="form-control" id="judul" name="judul" value="<?= htmlspecialchars($tugas['judul']) ?>" required>
+                    <label for="judul" class="form-label">Judul Tugas <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="judul" name="judul" 
+                           value="<?= htmlspecialchars($tugas['judul']) ?>" required>
+                    <div class="invalid-feedback">Judul tugas harus diisi</div>
                 </div>
                 
                 <div class="mb-3">
@@ -70,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 
                 <div class="mb-3">
-                    <label for="mk_id" class="form-label">Mata Kuliah</label>
-                    <select class="form-select" id="mk_id" name="mk_id">
+                    <label for="mk_id" class="form-label">Mata Kuliah <span class="text-danger">*</span></label>
+                    <select class="form-select" id="mk_id" name="mk_id" required>
                         <option value="">-- Pilih Mata Kuliah --</option>
                         <?php foreach ($mata_kuliah as $mk): ?>
                             <option value="<?= $mk['id'] ?>" <?= $mk['id'] == $tugas['mk_id'] ? 'selected' : '' ?>>
@@ -79,12 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </option>
                         <?php endforeach; ?>
                     </select>
+                    <div class="invalid-feedback">Mata kuliah harus dipilih</div>
                 </div>
                 
                 <div class="mb-3">
-                    <label for="deadline" class="form-label">Deadline</label>
+                    <label for="deadline" class="form-label">Deadline <span class="text-danger">*</span></label>
                     <input type="datetime-local" class="form-control" id="deadline" name="deadline" 
                            value="<?= date('Y-m-d\TH:i', strtotime($tugas['deadline'])) ?>" required>
+                    <div class="invalid-feedback">Deadline harus diisi</div>
                 </div>
                 
                 <div class="mb-3">
@@ -113,6 +117,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('editTugasForm');
+    
+    form.addEventListener('submit', function(event) {
+        // Validasi form sebelum submit
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Menambahkan class 'was-validated' untuk menampilkan pesan error
+            form.classList.add('was-validated');
+            
+            // Scroll ke field pertama yang error
+            const firstInvalid = form.querySelector(':invalid');
+            if (firstInvalid) {
+                firstInvalid.focus();
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+    
+    // Menghapus pesan error saat user mulai mengisi field
+    form.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', function() {
+            if (this.checkValidity()) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+            }
+        });
+    });
+});
+</script>
 
 <?php include '../../includes/footer.php'; ?>
 
@@ -166,5 +206,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     .fade-in-up {
         animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Styling untuk validasi */
+    .was-validated .form-control:invalid,
+    .was-validated .form-select:invalid {
+        border-color: #dc3545;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6.4.4.4-.4'/%3e%3cpath d='M6 7v2'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+    
+    .was-validated .form-control:valid,
+    .was-validated .form-select:valid {
+        border-color: #198754;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
     }
 </style>
